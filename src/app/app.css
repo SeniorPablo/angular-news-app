@@ -1,0 +1,55 @@
+/**
+ * app.css - Estilos del layout principal
+ * Ubicación: src/app/app.css
+ */
+
+:host {
+  display: block;
+  min-height: 100dvh;
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.navbar {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-decoration: none;
+}
+
+.nav-logo:hover {
+  color: #6366f1;
+}
+
+.nav-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: #ecfdf5;
+  color: #059669;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}

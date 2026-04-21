@@ -1,0 +1,30 @@
+<!--
+  category.html - Template de la página de categoría
+  Ubicación: src/app/pages/category/category.html
+-->
+
+<section class="category-page">
+
+  <a routerLink="/" class="back-link">← Volver a Inicio</a>
+
+  <header class="page-header">
+    <h1>{{ name() }}</h1>
+    <p>{{ articles().length }} artículos en esta categoría</p>
+  </header>
+
+  <div class="articles-grid">
+    @for (article of articles(); track article.id) {
+      <a [routerLink]="['/article', article.id]" class="article-card">
+        <img [src]="article.imageUrl" [alt]="article.title" class="article-image" />
+        <div class="article-content">
+          <h2 class="article-title">{{ article.title }}</h2>
+          <p class="article-excerpt">{{ article.excerpt }}</p>
+          <span class="article-meta">{{ article.author }} · {{ article.date }}</span>
+        </div>
+      </a>
+    } @empty {
+      <p class="no-articles">No hay artículos en esta categoría.</p>
+    }
+  </div>
+
+</section>

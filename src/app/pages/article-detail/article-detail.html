@@ -1,0 +1,44 @@
+<!--
+  article-detail.html - Template del detalle de artículo
+  Ubicación: src/app/pages/article-detail/article-detail.html
+
+  Este HTML se pre-renderiza en build time (SSG).
+  El crawler de Google recibe este HTML completo
+  con todo el contenido, meta tags y estructura semántica.
+-->
+
+@if (article(); as data) {
+
+  <article class="article-detail">
+
+    <a routerLink="/" class="back-link">← Volver a Inicio</a>
+
+    <img [src]="data.imageUrl" [alt]="data.title" class="hero-image" />
+
+    <header class="article-header">
+      <a [routerLink]="['/category', data.category]" class="article-category">
+        {{ data.category }}
+      </a>
+      <h1>{{ data.title }}</h1>
+      <div class="article-meta">
+        <span class="author">{{ data.author }}</span>
+        <span class="separator">·</span>
+        <time>{{ data.date }}</time>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <p>{{ data.content }}</p>
+    </div>
+
+  </article>
+
+} @else {
+
+  <div class="not-found">
+    <h2>Artículo no encontrado</h2>
+    <p>El artículo que buscas no existe.</p>
+    <a routerLink="/" class="back-link">← Volver a Inicio</a>
+  </div>
+
+}

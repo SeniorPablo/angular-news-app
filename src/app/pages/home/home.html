@@ -1,0 +1,48 @@
+<!--
+  home.html - Template de la página de inicio
+  Ubicación: src/app/pages/home/home.html
+
+  SSR: Este HTML se genera en el servidor en cada request
+  (RenderMode.Server) y llega al navegador listo para mostrar.
+-->
+
+<section class="home-page">
+
+  <!-- Categorías como filtros rápidos -->
+  <nav class="category-nav">
+    @for (category of categories; track category) {
+      <a [routerLink]="['/category', category]" class="category-chip">
+        {{ category }}
+      </a>
+    }
+  </nav>
+
+  <!-- Artículo destacado (el primero) -->
+  @if (featured) {
+    <a [routerLink]="['/article', featured.id]" class="featured-card">
+      <img [src]="featured.imageUrl" [alt]="featured.title" class="featured-image" />
+      <div class="featured-overlay">
+        <span class="featured-category">{{ featured.category }}</span>
+        <h1 class="featured-title">{{ featured.title }}</h1>
+        <p class="featured-excerpt">{{ featured.excerpt }}</p>
+        <span class="featured-meta">{{ featured.author }} · {{ featured.date }}</span>
+      </div>
+    </a>
+  }
+
+  <!-- Grid de artículos restantes -->
+  <div class="articles-grid">
+    @for (article of rest; track article.id) {
+      <a [routerLink]="['/article', article.id]" class="article-card">
+        <img [src]="article.imageUrl" [alt]="article.title" class="article-image" />
+        <div class="article-content">
+          <span class="article-category">{{ article.category }}</span>
+          <h2 class="article-title">{{ article.title }}</h2>
+          <p class="article-excerpt">{{ article.excerpt }}</p>
+          <span class="article-meta">{{ article.author }} · {{ article.date }}</span>
+        </div>
+      </a>
+    }
+  </div>
+
+</section>
